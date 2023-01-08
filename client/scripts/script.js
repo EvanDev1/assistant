@@ -172,7 +172,7 @@ const handleSubmit = async (e) => {
 
     // fetch data from server -> bot's response
 
-    const response = await fetch("http://localhost:5000", {
+    const response = await fetch("https://assistant-9ubj.onrender.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -619,8 +619,6 @@ function handleInputChange(e) {
 }
 
 const settingsData = JSON.parse(localStorage.getItem("settings"));
-console.log(settingsData);
-modelSelect.value = settingsData.Model;
 
 const settingsTemplate = {
   Model: "text-davinci-003",
@@ -654,6 +652,8 @@ function getSettingData(element) {
   }
   return data;
 }
+
+modelSelect.value = settingsData.Model;
 
 rangeInputs.forEach((input) => {
   let data = getSettingData(input);
