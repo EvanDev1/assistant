@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assistant</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link rel="stylesheet" href="/styles/settings.css" />
+  </head>
+  <body>
+    <div id="app">
+      <nav>
+        <button id="new-chat">
+          <img src="assets/plus.svg" draggable="false" />
+          New Chat
+        </button>
+
+        <div id="stored-chats"></div>
+
+        <div id="settings">
+          <div id="settings__model">
+            <h3 class="settings-name">Model:</h3>
+            <select id="settings__model__select"></select>
+          </div>
+
+          <div id="settings__tokens">
+            <div id="settings__tokens__input-div">
+              <h3 class="settings-name">Max Tokens:</h3>
+              <input type="number" id="settings__tokens__value" class="settings-input tokens"/>
+            </div>
+            <input
+              type="range"
+              id="settings__tokens__range"
+              class="tokens"
+              min="1"
+              max="2048"
+              oninput="settings__tokens__value.innerText = this.value"
+            />
+          </div>
+
+          <div id="settings__temp">
+            <div id="settings__temp__input-div">
+              <h3 class="settings-name">Temperature:</h3>
+              <input type="number" id="settings__temp__value" step="0.01" class="settings-input decimal-input temp"/>
+            </div>
+            <input
+              type="range"
+              id="settings__temp__range"
+              class="temp"
+              min="0"
+              max="1"
+              step="0.01"
+              oninput="settings__temp__value.innerText = this.value"
+            />
+          </div>
+        </div>
+      </nav>
+
+      <div id="content">
+        <div id="display">
+          <h1>OpenAI Assistant</h1>
+          <div id="info">
+            <h3>Ask any question, anytime</h3>
+            <h3>Switch between different models</h3>
+            <h3>Customize model settings</h3>
+          </div>
+        </div>
+        <div id="chat_container"></div>
+
+        <div id="form-wrapper">
+          <form>
+            <textarea
+              id="inputArea"
+              name="prompt"
+              rows="1"
+              cols="1"
+              placeholder="Ask Assistant..."
+            ></textarea>
+            <img id="expand" src="assets/expand.svg" draggable="false" />
+            <buton id="submit" type="submit"
+              ><img src="assets/send.svg" draggable="false"
+            /></buton>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/scripts/script.js"></script>
+  </body>
+</html>
