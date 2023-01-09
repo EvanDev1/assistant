@@ -8,6 +8,17 @@ import minimize from "../assets/minimize.svg";
 import expand from "../assets/expand.svg";
 import chat from "../assets/chat.svg";
 
+// Preloading images
+var images = [bot, user, done, edit, deleteImg, close, minimize, expand, chat];
+function preload() {
+    for (var i = 0; i < arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+    }
+}
+
+preload()
+
 const form = document.querySelector("form");
 const chatContainer = document.querySelector("#chat_container");
 const inputArea = document.querySelector("#inputArea");
