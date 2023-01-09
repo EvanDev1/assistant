@@ -39,6 +39,12 @@ let numOfChats = 0;
 
 const settingsData = JSON.parse(localStorage.getItem("settings"));
 
+const settingsTemplate = {
+  Model: "text-davinci-003",
+  MaxTokens: 1000,
+  Temp: 0.7,
+};
+
 if (!settingsData) {
   localStorage.setItem("settings", JSON.stringify(settingsTemplate));
 }
@@ -628,11 +634,7 @@ function handleInputChange(e) {
   }
 }
 
-const settingsTemplate = {
-  Model: "text-davinci-003",
-  MaxTokens: 1000,
-  Temp: 0.7,
-};
+
 
 function resetSettings() {
   localStorage.setItem("settings", JSON.stringify(settingsTemplate));
