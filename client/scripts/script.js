@@ -364,14 +364,14 @@ function saveChatName(element) {
 
 function confirmDelete(element) {
   deletingChat = true;
-  switchBtnsImg(element, "assets/done.svg", "assets/close.svg");
-  element.querySelector("img").src = "assets/delete.svg";
+  switchBtnsImg(element, done, close);
+  element.querySelector("img").src = deleteImg;
 }
 
 function stopDelete(element) {
   deletingChat = false;
-  switchBtnsImg(element, "assets/edit.svg", "assets/delete.svg");
-  element.querySelector("img").src = "assets/chat.svg";
+  switchBtnsImg(element, edit, deleteImg);
+  element.querySelector("img").src = close;
 }
 
 function addChatListeners(element) {
