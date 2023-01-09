@@ -37,7 +37,7 @@ let loadInterval;
 let submitting = false;
 let numOfChats = 0;
 
-const settingsData = JSON.parse(localStorage.getItem("settings"));
+let settingsData = JSON.parse(localStorage.getItem("settings"));
 
 const settingsTemplate = {
   Model: "text-davinci-003",
