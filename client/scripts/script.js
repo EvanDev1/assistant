@@ -1,5 +1,11 @@
 import bot from "../assets/ai.ico";
 import user from "../assets/user.svg";
+import done from "../assets/done.svg";
+import edit from "../assets/edit.svg";
+import deleteImg from "../assets/delete.svg";
+import close from "../assets/close.svg";
+import minimize from "../assets/minimize.svg";
+import expand from "../assets/expand.svg";
 
 const form = document.querySelector("form");
 const chatContainer = document.querySelector("#chat_container");
@@ -245,7 +251,7 @@ let expanded = false;
 
 function expandInput() {
   expanded = true;
-  inputExpand.src = "assets/minimize.svg";
+  inputExpand.src = minimize;
   inputArea.style.height = `350px`;
 
   inputSubmit.classList.add("flex-start");
@@ -254,7 +260,7 @@ function expandInput() {
 
 function minimizeInput() {
   expanded = false;
-  inputExpand.src = "assets/expand.svg";
+  inputExpand.src = expand;
   inputArea.style.height = `41px`;
 
   inputSubmit.classList.remove("flex-start");
@@ -289,7 +295,7 @@ function switchBtnsImg(chatElement, btn1Img, btn2Img) {
 
 function editName(chatElement) {
   editingName = true;
-  switchBtnsImg(chatElement, "assets/done.svg", "assets/close.svg");
+  switchBtnsImg(chatElement, done, close);
   const navChatName = chatElement.querySelector(".nav-chat__name");
   const name = navChatName.querySelector("input");
   navChatName.classList.remove("fade-text");
@@ -301,7 +307,7 @@ function editName(chatElement) {
 
 function stopEdit(chatElement) {
   editingName = false;
-  switchBtnsImg(chatElement, "assets/edit.svg", "assets/delete.svg");
+  switchBtnsImg(chatElement, edit, deleteImg);
   const navChatName = chatElement.querySelector(".nav-chat__name");
   const name = navChatName.querySelector("input");
   navChatName.classList.add("fade-text");
