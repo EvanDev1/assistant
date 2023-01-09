@@ -6,6 +6,7 @@ import deleteImg from "../assets/delete.svg";
 import close from "../assets/close.svg";
 import minimize from "../assets/minimize.svg";
 import expand from "../assets/expand.svg";
+import chat from "../assets/chat.svg";
 
 const form = document.querySelector("form");
 const chatContainer = document.querySelector("#chat_container");
@@ -462,16 +463,16 @@ function newChatClicked() {
 
 newChat.addEventListener("click", newChatClicked);
 
-function savedChatComponent(id) {
+function savedChatComponent(id) { // here
   return `
     <div class="nav-chat" id="${id}">
-      <img src="assets/chat.svg" draggable="false">
+      <img src="${chat}" draggable="false">
       <div class="nav-chat__name fade-text">
         <input type="text" readonly="false" maxlength="50">
       </div>
       <div class="nav-chat__btns">
-        <img src="assets/edit.svg" class="chat-btn1" draggable="false">
-        <img src="assets/delete.svg" class="chat-btn2" draggable="false">
+        <img src="${edit}" class="chat-btn1" draggable="false">
+        <img src="${deleteImg}" class="chat-btn2" draggable="false">
       </div>
     </div>
   `;
