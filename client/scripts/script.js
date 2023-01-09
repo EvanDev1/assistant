@@ -47,6 +47,7 @@ const settingsTemplate = {
 
 if (!settingsData) {
   localStorage.setItem("settings", JSON.stringify(settingsTemplate));
+  settingsData = settingsTemplate;
 }
 
 let savedChats = JSON.parse(localStorage.getItem("savedChats"));
