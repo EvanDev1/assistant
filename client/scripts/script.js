@@ -37,6 +37,18 @@ let loadInterval;
 let submitting = false;
 let numOfChats = 0;
 
+const settingsData = JSON.parse(localStorage.getItem("settings"));
+
+if (!settingsData) {
+  localStorage.setItem("settings", JSON.stringify(settingsTemplate));
+}
+
+let savedChats = JSON.parse(localStorage.getItem("savedChats"));
+
+if (!savedChats) {
+  localStorage.setItem("savedChats", JSON.stringify([]));
+}
+
 chatContainer.style.display = "none";
 
 function clearData() {
@@ -470,12 +482,6 @@ function addChat(name) {
   return chatElement;
 }
 
-let savedChats = JSON.parse(localStorage.getItem("savedChats"));
-
-if (!savedChats) {
-  localStorage.setItem("savedChats", JSON.stringify([]));
-}
-
 function loadData() {
   savedChats.forEach((data) => {
     addChat(data.Name);
@@ -622,8 +628,6 @@ function handleInputChange(e) {
   }
 }
 
-const settingsData = JSON.parse(localStorage.getItem("settings"));
-
 const settingsTemplate = {
   Model: "text-davinci-003",
   MaxTokens: 1000,
@@ -631,10 +635,6 @@ const settingsTemplate = {
 };
 
 function resetSettings() {
-  localStorage.setItem("settings", JSON.stringify(settingsTemplate));
-}
-
-if (!settingsData) {
   localStorage.setItem("settings", JSON.stringify(settingsTemplate));
 }
 
