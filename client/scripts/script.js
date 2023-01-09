@@ -21,12 +21,12 @@ const tokensValue = document.querySelector("#settings__tokens__value");
 const tokensRange = document.querySelector("#settings__tokens__range");
 
 const models = {
-  'text-davinci-003': {MaxTokens: 4000, Temperature: 0.7 },
-  'text-curie-001': {MaxTokens: 2048, Temperature: 0.7 },
-  "text-babbage-001": {MaxTokens: 2048, Temperature: 0.7 },
-  "text-ada-001": {MaxTokens: 2048, Temperature: 0.7 },
-  "code-davinci-002": {MaxTokens: 8000, Temperature: 0 },
-  "code-cushman-001": {MaxTokens: 2048, Temperature: 0 },
+  "text-davinci-003": { MaxTokens: 4000, Temperature: 0.7 },
+  "text-curie-001": { MaxTokens: 2048, Temperature: 0.7 },
+  "text-babbage-001": { MaxTokens: 2048, Temperature: 0.7 },
+  "text-ada-001": { MaxTokens: 2048, Temperature: 0.7 },
+  "code-davinci-002": { MaxTokens: 8000, Temperature: 0 },
+  "code-cushman-001": { MaxTokens: 2048, Temperature: 0 },
 };
 
 let selectedChat;
@@ -181,7 +181,7 @@ const handleSubmit = async (e) => {
         prompt: data.get("prompt"),
         model: modelSelect.value,
         maxTokens: tokensValue.value,
-        temp: tempValue.value
+        temp: tempValue.value,
       }),
     });
 
@@ -395,7 +395,7 @@ document.addEventListener("mouseup", function (event) {
       );
       const min = range.min;
       const max = range.max;
-      const data = getSettingData(selectedInput)
+      const data = getSettingData(selectedInput);
 
       let decimalInput = selectedInput.classList.contains("decimal-input")
         ? true
@@ -471,6 +471,10 @@ function addChat(name) {
 }
 
 let savedChats = JSON.parse(localStorage.getItem("savedChats"));
+
+if (!savedChats) {
+  localStorage.setItem("savedChats", JSON.stringify([]));
+}
 
 function loadData() {
   savedChats.forEach((data) => {
@@ -640,15 +644,15 @@ function saveSettings() {
     MaxTokens: document.querySelector("#settings__tokens__value").value,
     Temp: document.querySelector("#settings__temp__value").value,
   };
-  localStorage.setItem('settings', JSON.stringify(data));
+  localStorage.setItem("settings", JSON.stringify(data));
 }
 
 function getSettingData(element) {
   let data;
   if (element.classList.contains("temp")) {
-    data = JSON.parse(localStorage.getItem('settings')).Temp;
+    data = JSON.parse(localStorage.getItem("settings")).Temp;
   } else if (element.classList.contains("tokens")) {
-    data = JSON.parse(localStorage.getItem('settings')).MaxTokens;
+    data = JSON.parse(localStorage.getItem("settings")).MaxTokens;
   }
   return data;
 }
@@ -658,7 +662,7 @@ modelSelect.value = settingsData.Model;
 rangeInputs.forEach((input) => {
   let data = getSettingData(input);
   if (input.classList.contains("tokens")) {
-    input.max = models[modelSelect.value].MaxTokens
+    input.max = models[modelSelect.value].MaxTokens;
   }
   input.value = data;
   updateRangeBackground(input);
@@ -692,5 +696,5 @@ modelSelect.addEventListener("change", function () {
 
   updateRangeBackground(tempRange);
   updateRangeBackground(tokensRange);
-  saveSettings();  
+  saveSettings();
 });
