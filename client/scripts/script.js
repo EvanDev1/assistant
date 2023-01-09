@@ -371,7 +371,7 @@ function confirmDelete(element) {
 function stopDelete(element) {
   deletingChat = false;
   switchBtnsImg(element, edit, deleteImg);
-  element.querySelector("img").src = close;
+  element.querySelector("img").src = chat;
 }
 
 function addChatListeners(element) {
