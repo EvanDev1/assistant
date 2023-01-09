@@ -40,6 +40,12 @@ app.post("/", async (req, res) => {
       bot: response.data.choices[0].text,
     });
 
+    // {
+    //   prompt: 'hey',
+    //   model: 'text-davinci-003',
+    //   maxTokens: '539',
+    //   temp: '0.46'
+    // }
   } catch (error) {
     console.log(error);
     res.status(500).send({ error });
