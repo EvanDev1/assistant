@@ -9,7 +9,6 @@ const configuration = new Configuration({
   apiKey: "Server is running properly",
 });
 
-
 const openai = new OpenAIApi(configuration);
 
 const app = express();
@@ -18,10 +17,9 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
   res.status(200).send({
-    message: `${process.env.OPENAI_API_KEY}`,
+    message: `Server is running properly!`,
   });
 });
-
 
 app.post("/", async (req, res) => {
   try {
