@@ -21,11 +21,12 @@ app.get("/", async (req, res) => {
   });
 });
 
+
 app.post("/", async (req, res) => {
   try {
     const data = req.body;
     console.log(data);
-    
+
     const response = await openai.createCompletion({
       model: `${data.model}`,
       prompt: `${data.prompt}`,
