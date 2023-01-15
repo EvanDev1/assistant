@@ -6,7 +6,7 @@ import { Configuration, OpenAIApi } from "openai";
 dotenv.config();
 
 const configuration = new Configuration({
-  apiKey: "Server is running properly",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -35,9 +35,6 @@ app.post("/", async (req, res) => {
       frequency_penalty: 0.5,
       presence_penalty: 0,
     });
-
-    console.log(response);
-    console.log(process.env.OPENAI_API_KEY);
 
     res.status(200).send({
       bot: response.data.choices[0].text,
