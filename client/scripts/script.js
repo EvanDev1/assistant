@@ -209,7 +209,7 @@ const handleSubmit = async (e) => {
 
     // fetch data from server -> bot's response
 
-    const response = await fetch("https://assistant-9ubj.onrender.com", {
+    const response = await fetch("https://assistant-p3wj.vercel.app/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
