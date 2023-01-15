@@ -9,6 +9,7 @@ const configuration = new Configuration({
   apiKey: "Server is running properly",
 });
 
+
 const openai = new OpenAIApi(configuration);
 
 const app = express();
