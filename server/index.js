@@ -25,7 +25,7 @@ app.post("/", async (req, res) => {
   try {
     const data = req.body;
     console.log(data);
-
+    console.log(process.env.OPENAI_API_KEY);
     const response = await openai.createCompletion({
       model: `${data.model}`,
       prompt: `${data.prompt}`,
