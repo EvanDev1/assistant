@@ -27,8 +27,8 @@ app.post("/", async (req, res) => {
     console.log(data);
 
     const response = await openai.createCompletion({
-      model: data.model,
-      prompt: data.prompt,
+      model: `${data.model}`,
+      prompt: `${data.prompt}`,
       temperature: parseFloat(data.temp),
       max_tokens: parseFloat(data.maxTokens),
       top_p: 1,
@@ -36,17 +36,15 @@ app.post("/", async (req, res) => {
       presence_penalty: 0,
     });
 
-    // Send the response from OpenAI back to the client
     res.status(200).send({
       bot: response.data.choices[0].text,
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).send({ error: error.message || 'Something went wrong!' });
+    console.log(error);
+    res.status(500).send({ error });
   }
 });
 
 app.listen(5000, () =>
   console.log("Server is running on port http://localhost:5000/")
 );
-
